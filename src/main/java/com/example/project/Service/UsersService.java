@@ -10,8 +10,9 @@ public interface UsersService {
 
     Users findByUsername(String username);
 
-    Users deleteWithUsername(String username);
+    void deleteWithUsername(String username);
 
+    Users ceate(String username,String name,String surname,String password,String telphone);
 
 
 }

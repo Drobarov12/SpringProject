@@ -18,12 +18,13 @@ public class Reservations {
     private String carModel;
     @Enumerated(EnumType.STRING)
     private ServiceType serviceType;
+    private String description;
 
     public Reservations() {
     }
 
     public Reservations(String username, String name, String surname,
-                        String telephone, String carBrand, String carModel, ServiceType serviceType) {
+                        String telephone, String carBrand, String carModel, ServiceType serviceType,String description) {
         this.username = username;
         this.name = name;
         this.surname = surname;
@@ -31,6 +32,7 @@ public class Reservations {
         this.carBrand = carBrand;
         this.carModel = carModel;
         this.serviceType = serviceType;
+        this.description = description;
     }
 
 }

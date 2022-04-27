@@ -29,10 +29,18 @@ public class UsersServiceImpl implements UsersService {
         return this.usersRepository.findById(username).orElseThrow(InvalidUserIdExeption::new);
     }
 
+
+
     @Override
-    public Users deleteWithUsername(String username) {
+    public void deleteWithUsername(String username) {
         Users temp = this.findByUsername(username);
         this.usersRepository.deleteById(username);
-        return temp;
+    }
+
+    @Override
+    public Users ceate(String username, String name, String surname, String password, String telphone) {
+        Users u = new Users(username,name,surname,password,telphone);
+        this.usersRepository.save(u);
+        return u;
     }
 }

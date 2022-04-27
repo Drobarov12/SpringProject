@@ -12,16 +12,18 @@ public class Users {
     private String username;
     private String name;
     private String surname;
+    private String password;
     private String telephone;
 
     public Users() {
     }
 
-    public Users(String username, String name, String surname, String telephone) {
+    public Users(String username, String name, String surname,String password, String telephone) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.telephone = telephone;
+        this.password = password;
     }
 
 }

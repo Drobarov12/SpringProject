@@ -59,8 +59,9 @@ public class ReservationsController {
                         @RequestParam String telephone,
                         @RequestParam String carBrand,
                         @RequestParam String carModel,
-                        @RequestParam ServiceType serviceType){
-        this.reservationsService.create(username, name, surname, telephone, carBrand, carModel, serviceType);
+                        @RequestParam ServiceType serviceType,
+                        @RequestParam String description){
+        this.reservationsService.create(username, name, surname, telephone, carBrand, carModel, serviceType,description);
         return "redirect:/reservation";
     }
 
@@ -72,8 +73,9 @@ public class ReservationsController {
                         @RequestParam String telephone,
                         @RequestParam String carBrand,
                         @RequestParam String carModel,
-                        @RequestParam ServiceType serviceType){
-        this.reservationsService.update(id,username, name, surname, telephone, carBrand, carModel, serviceType);
+                        @RequestParam ServiceType serviceType,
+                         @RequestParam String description){
+        this.reservationsService.update(id,username, name, surname, telephone, carBrand, carModel, serviceType,description);
         return "redirect:/reservation";
     }
 

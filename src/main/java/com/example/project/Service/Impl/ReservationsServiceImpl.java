@@ -25,6 +25,11 @@ public class ReservationsServiceImpl implements ReservationsService {
     }
 
     @Override
+    public List<Reservations> findByCarBrand(String carBrand) {
+        return this.reservationsRepository.findAllByCarBrand(carBrand);
+    }
+
+    @Override
     public Reservations findById(Long id) {
         return this.reservationsRepository.findById(id).orElseThrow(ReservationNotFound::new);
     }
@@ -38,14 +43,14 @@ public class ReservationsServiceImpl implements ReservationsService {
 
     @Override
     public Reservations create( String usename, String name, String surname, String telephone,
-                               String carBrand, String carModel, ServiceType serviceType) {
-        Reservations temp = new Reservations(usename, name, surname, telephone, carBrand, carModel, serviceType);
+                               String carBrand, String carModel, ServiceType serviceType,String description) {
+        Reservations temp = new Reservations(usename, name, surname, telephone, carBrand, carModel, serviceType,description);
         return this.reservationsRepository.save(temp);
     }
 
     @Override
     public Reservations update(Long id, String usename, String name, String surname, String telephone,
-                              String carBrand, String carModel, ServiceType serviceType) {
+                              String carBrand, String carModel, ServiceType serviceType,String description) {
         Reservations temp = this.findById(id);
         temp.setUsername(usename);
         temp.setName(name);
@@ -54,6 +59,7 @@ public class ReservationsServiceImpl implements ReservationsService {
         temp.setCarBrand(carBrand);
         temp.setCarModel(carModel);
         temp.setServiceType(serviceType);
+        temp.setDescription(description);
         return this.reservationsRepository.save(temp);
     }
 }

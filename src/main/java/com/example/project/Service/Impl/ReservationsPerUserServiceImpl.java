@@ -8,6 +8,7 @@ import com.example.project.Service.ReservationsPerUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationsPerUserServiceImpl implements ReservationsPerUserService {
@@ -24,7 +25,20 @@ public class ReservationsPerUserServiceImpl implements ReservationsPerUserServic
     }
 
     @Override
-    public ReservationsPerUser findByUsername(String username) {
-        return this.reservationsPerUserRepository.findById(username).orElseThrow(ReservationPerUserNotFound::new);
+    public Optional<ReservationsPerUser> findByUsername(String username) {
+        return this.reservationsPerUserRepository.findById(username);
+    }
+
+    @Override
+    public ReservationsPerUser create(String username) {
+        if(this.findByUsername(username).isPresent()){
+            ReservationsPerUser temp = this.findByUsername(username).orElseThrow(ReservationPerUserNotFound::new);
+            temp.setReservationsNum(temp.getReservationsNum()+1);
+            return temp;
+        }
+        else{
+            ReservationsPerUser r = new ReservationsPerUser(username,Long.valueOf(0));
+            return r;
+        }
     }
 }
