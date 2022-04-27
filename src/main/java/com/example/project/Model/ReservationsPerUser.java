@@ -1,8 +1,11 @@
 package com.example.project.Model;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class ReservationsPerUser {
     @Id
@@ -17,19 +20,4 @@ public class ReservationsPerUser {
         this.reservationsNum = reservationsNum;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Long getReservationsNum() {
-        return reservationsNum;
-    }
-
-    public void setReservationsNum(Long reservationsNum) {
-        this.reservationsNum = reservationsNum;
-    }
 }
