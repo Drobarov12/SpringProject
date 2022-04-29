@@ -8,6 +8,7 @@ import com.example.project.Service.ReservationsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationsServiceImpl implements ReservationsService {
@@ -30,28 +31,28 @@ public class ReservationsServiceImpl implements ReservationsService {
     }
 
     @Override
-    public Reservations findById(Long id) {
-        return this.reservationsRepository.findById(id).orElseThrow(ReservationNotFound::new);
+    public Optional<Reservations> findById(Long id) {
+        return this.reservationsRepository.findById(id);
     }
 
     @Override
-    public Reservations delete(Long id) {
-        Reservations temp = this.findById(id);
+    public void delete(Long id) {
+        Reservations temp = this.findById(id).orElseThrow(ReservationNotFound::new);
         this.reservationsRepository.deleteById(id);
-        return temp;
     }
 
     @Override
-    public Reservations create( String usename, String name, String surname, String telephone,
-                               String carBrand, String carModel, ServiceType serviceType,String description) {
+    public Optional<Reservations> create(String usename, String name, String surname, String telephone,
+                                         String carBrand, String carModel, ServiceType serviceType, String description) {
         Reservations temp = new Reservations(usename, name, surname, telephone, carBrand, carModel, serviceType,description);
-        return this.reservationsRepository.save(temp);
+        this.reservationsRepository.save(temp);
+        return Optional.of(temp);
     }
 
     @Override
-    public Reservations update(Long id, String usename, String name, String surname, String telephone,
+    public Optional<Reservations> update(Long id, String usename, String name, String surname, String telephone,
                               String carBrand, String carModel, ServiceType serviceType,String description) {
-        Reservations temp = this.findById(id);
+        Reservations temp = this.findById(id).orElseThrow(ReservationNotFound::new);
         temp.setUsername(usename);
         temp.setName(name);
         temp.setSurname(surname);
@@ -60,6 +61,7 @@ public class ReservationsServiceImpl implements ReservationsService {
         temp.setCarModel(carModel);
         temp.setServiceType(serviceType);
         temp.setDescription(description);
-        return this.reservationsRepository.save(temp);
+        this.reservationsRepository.save(temp);
+        return Optional.of(temp);
     }
 }

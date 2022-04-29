@@ -14,16 +14,18 @@ public class Users {
     private String surname;
     private String password;
     private String telephone;
+    @Enumerated(value = EnumType.STRING)
+    private UserType userType;
 
     public Users() {
     }
 
-    public Users(String username, String name, String surname,String password, String telephone) {
+    public Users(String username, String name, String surname, String password, String telephone, UserType userType) {
         this.username = username;
         this.name = name;
         this.surname = surname;
-        this.telephone = telephone;
         this.password = password;
+        this.telephone = telephone;
+        this.userType = userType;
     }
-
 }

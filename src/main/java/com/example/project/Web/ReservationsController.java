@@ -1,6 +1,7 @@
 package com.example.project.Web;
 
 
+import com.example.project.Model.Exeptions.ReservationNotFound;
 import com.example.project.Model.Reservations;
 import com.example.project.Model.ServiceType;
 import com.example.project.Service.ReservationsService;
@@ -42,7 +43,7 @@ public class ReservationsController {
 
     @GetMapping("/reservation/{id}/edit")
     public String showEdit(@PathVariable Long id, Model model) {
-        Reservations res = this.reservationsService.findById(id);
+        Reservations res = this.reservationsService.findById(id).orElseThrow(ReservationNotFound::new);
         List<ServiceType> types = Arrays.asList(REGULAR_CHECK, CAR_PROBLEM, CHECK, OTHER);
 
         model.addAttribute("types", types);
