@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 const userTerm = (props) =>{
     return(
@@ -13,6 +14,12 @@ const userTerm = (props) =>{
                    onClick={() => props.onDelete(props.term.username)}>
                     Delete
                 </a>
+
+                <Link className={"btn btn-warning"}
+                   onClick={() => props.onEdit(props.term.username)}
+                    to={"/editUser"}>
+                    Edit
+                </Link>
             </td>
         </tr>
     );

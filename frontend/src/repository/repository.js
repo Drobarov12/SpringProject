@@ -28,6 +28,9 @@ const Service = {
             "password": password,
             "telephone": telephone
         })
+    },
+    getUser:(username) => {
+        return axios.get(`/users/${username}`);
     }
 }
 

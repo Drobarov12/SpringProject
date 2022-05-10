@@ -22,8 +22,15 @@ public class UsersController {
         return this.usersService.listAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Users> findById(@PathVariable String id) {
+        return this.usersService.findByUsername(id)
+                .map(product -> ResponseEntity.ok().body(product))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping("/add")
-    public ResponseEntity addUser(@RequestBody Users users){
+    public ResponseEntity<Users> addUser(@RequestBody Users users){
 
         return this.usersService.ceate(users)
                 .map(user->ResponseEntity.ok().body(user))
@@ -31,7 +38,7 @@ public class UsersController {
     }
 
     @PostMapping("/edit")
-    public ResponseEntity editUser(@RequestBody Users users){
+    public ResponseEntity<Users> editUser(@RequestBody Users users){
             return this.usersService.edit(users)
                     .map(user->ResponseEntity.ok().body(user))
                     .orElseGet(()->ResponseEntity.notFound().build());
