@@ -39,8 +39,9 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Optional<Users> ceate(String username, String name, String surname, String password, String telphone) {
-        Users u = new Users(username,name,surname,password,telphone,UserType.USER);
+    public Optional<Users> ceate(Users users) {
+        Users u = new Users(users.getUsername(), users.getName(), users.getSurname(),
+                users.getPassword(), users.getTelephone(), UserType.USER);
         this.usersRepository.save(u);
         return Optional.of(u);
     }
@@ -54,5 +55,17 @@ public class UsersServiceImpl implements UsersService {
         else{
             u.setUserType(UserType.USER);
         }
+    }
+
+    @Override
+    public Optional<Users> edit(Users users) {
+        Users u = this.usersRepository.findById(users.getUsername())
+                .orElseThrow(InvalidUserIdExeption::new);
+        u.setName(users.getName());
+        u.setSurname(users.getSurname());
+        u.setPassword(users.getPassword());
+        u.setTelephone(users.getTelephone());
+        this.usersRepository.save(u);
+        return Optional.of(u);
     }
 }

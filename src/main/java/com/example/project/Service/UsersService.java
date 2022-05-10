@@ -14,9 +14,9 @@ public interface UsersService {
 
     void deleteWithUsername(String username);
 
-    Optional<Users> ceate(String username, String name, String surname, String password, String telphone);
+    Optional<Users> ceate(Users users);
 
     void changeRole(String username);
 
-
+    Optional<Users> edit(Users users);
 }

@@ -22,6 +22,21 @@ public class UsersController {
         return this.usersService.listAllUsers();
     }
 
+    @PostMapping("/add")
+    public ResponseEntity addUser(@RequestBody Users users){
+
+        return this.usersService.ceate(users)
+                .map(user->ResponseEntity.ok().body(user))
+                .orElseGet(()->ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/edit")
+    public ResponseEntity editUser(@RequestBody Users users){
+            return this.usersService.edit(users)
+                    .map(user->ResponseEntity.ok().body(user))
+                    .orElseGet(()->ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/delete/{username}")
     public ResponseEntity delete(@PathVariable String username){
         this.usersService.deleteWithUsername(username);
