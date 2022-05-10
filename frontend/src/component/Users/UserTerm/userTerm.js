@@ -20,6 +20,10 @@ const userTerm = (props) =>{
                     to={"/editUser"}>
                     Edit
                 </Link>
+                <a title={"ChangeRole"} className={"btn btn-info"}
+                   onClick={() => props.onChangeRole(props.term.username)}>
+                    ChangeRole
+                </a>
             </td>
         </tr>
     );

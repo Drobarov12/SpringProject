@@ -31,6 +31,9 @@ const Service = {
     },
     getUser:(username) => {
         return axios.get(`/users/${username}`);
+    },
+    changeRoleOnUser:(username) => {
+        return axios.get(`/users/changeRole/${username}`);
     }
 }
 

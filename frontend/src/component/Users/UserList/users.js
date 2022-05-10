@@ -19,7 +19,10 @@ const users = (props) =>{
                 <tbody>
                 {props.users.map((user) =>{
                     return(
-                        <UsersTerm term={user} onDelete={props.onDelete} onEdit={props.onEdit}/>
+                        <UsersTerm term={user}
+                                   onDelete={props.onDelete}
+                                   onEdit={props.onEdit}
+                                   onChangeRole={props.onChangeRole}/>
                     )
                 })}
                 </tbody>

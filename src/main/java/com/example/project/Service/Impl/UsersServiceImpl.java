@@ -55,6 +55,7 @@ public class UsersServiceImpl implements UsersService {
         else{
             u.setUserType(UserType.USER);
         }
+        this.usersRepository.save(u);
     }
 
     @Override

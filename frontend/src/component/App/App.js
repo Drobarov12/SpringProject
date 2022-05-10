@@ -28,8 +28,10 @@ class App extends Component {
                 <MainHeader/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="users" element={<Users users={this.state.users} onDelete={this.deleteUser}
-                                                        onEdit={this.getUser}/>}/>
+                    <Route path="users" element={<Users users={this.state.users}
+                                                        onDelete={this.deleteUser}
+                                                        onEdit={this.getUser}
+                                                        onChangeRole={this.changeRoleOnUser}/>}/>
                     <Route path="registerUser" element={<Register onAddUser={this.addUser}/>}/>
                     <Route path="editUser"
                            element={<EditUser onEditUser={this.editUser} user={this.state.selectedUser}/>}/>
@@ -91,6 +93,13 @@ class App extends Component {
                 this.setState({
                     selectedUser: data.data
                 })
+            })
+    }
+
+    changeRoleOnUser = (username) => {
+        Service.changeRoleOnUser(username)
+            .then(() => {
+                this.loadUsers()
             })
     }
 }
