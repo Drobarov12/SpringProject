@@ -4,10 +4,12 @@ import './App.css';
 import Service from "../../repository/repository";
 import Home from "../Home/home"
 import Users from "../Users/UserList/users"
-import Reservations from "../Reservations/reservations"
+import Reservations from "../Reservations/ListReservations/reservations"
 import MainHeader from "../Headers/MainHeader/mainHeader"
 import Register from "../Users/RegisterUser/registerUser"
 import EditUser from "../Users/EditUser/editUser"
+import AddReservation from "../Reservations/AddReservation/addReservation"
+import EditReservation from "../Reservations/EditReservation/editReservation"
 
 class App extends Component {
     constructor(props) {
@@ -16,27 +18,35 @@ class App extends Component {
             reservations: [],
             users: [],
             rezervationPerUser: [],
-            selectedUser: {}
+            servicesType:[],
+            selectedUser: {},
+            selectedReservation:{}
         }
     }
 
     render() {
         return (
-
-
             <BrowserRouter>
                 <MainHeader/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="users/edit"
+                           element={<EditUser onEditUser={this.editUser} user={this.state.selectedUser}/>}/>
                     <Route path="users" element={<Users users={this.state.users}
                                                         onDelete={this.deleteUser}
                                                         onEdit={this.getUser}
                                                         onChangeRole={this.changeRoleOnUser}/>}/>
                     <Route path="registerUser" element={<Register onAddUser={this.addUser}/>}/>
-                    <Route path="editUser"
-                           element={<EditUser onEditUser={this.editUser} user={this.state.selectedUser}/>}/>
 
-                    <Route path="reservations" element={<Reservations reservations={this.state.reservations}/>}/>
+
+                    <Route path="reservations/add" element={<AddReservation s={this.state.servicesType}
+                                                                            onAddReservation={this.addReservation}/>}/>
+                    <Route path="reservations/edit" element={<EditReservation reservation={this.state.selectedReservation}
+                                                                             s={this.state.servicesType}
+                                                                             onEditReservation={this.editReservation}/>}/>
+                    <Route path="reservations" element={<Reservations reservations={this.state.reservations}
+                                                                      onDeleteRes={this.deleteReservation}
+                                                                      onEditRes={this.getReservation}/>}/>
 
                 </Routes>
             </BrowserRouter>
@@ -46,6 +56,7 @@ class App extends Component {
     componentDidMount() {
         this.loadUsers();
         this.loadReservations();
+        this.loadServicesType();
     }
 
     loadUsers = () => {
@@ -65,6 +76,17 @@ class App extends Component {
                 })
             })
     }
+
+    loadServicesType = () =>{
+        Service.fetchServiceTypes()
+            .then((data) => {
+                this.setState({
+                    servicesType: data.data
+                })
+            })
+    }
+
+    // start of user functions
 
     deleteUser = (username) => {
         Service.deleteUser(username)
@@ -102,6 +124,43 @@ class App extends Component {
                 this.loadUsers()
             })
     }
+
+//    end of user functions
+
+//    start of reservation functions
+
+    addReservation = (username,name,surname,telephone,carBrand,carModel,serviceType,description) => {
+        Service.addReservation(username,name,surname,telephone,carBrand,carModel,serviceType,description)
+            .then(()=>{
+                this.loadReservations()
+            })
+    }
+
+    editReservation = (id,username,name,surname,telephone,carBrand,carModel,serviceType,description) => {
+        Service.editReservation(id,username,name,surname,telephone,carBrand,carModel,serviceType,description)
+            .then(()=>{
+                this.loadReservations()
+            })
+    }
+
+    getReservation = (id) =>{
+        Service.getReservation(id)
+            .then((data) => {
+                this.setState({
+                    selectedReservation: data.data
+                })
+            })
+    }
+
+    deleteReservation = (id) => {
+        Service.deleteReservation(id)
+            .then(()=>{
+                this.loadReservations()
+            })
+    }
+
+
+//    end of reservation functions
 }
 
 export default App;

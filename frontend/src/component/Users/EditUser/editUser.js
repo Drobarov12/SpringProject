@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const editUser = (props) => {
     const navigate = useNavigate();
@@ -24,66 +24,74 @@ const editUser = (props) => {
         const name = formData.name !== "" ? formData.name : props.user.name;
         const surname = formData.surname !== "" ? formData.surname : props.user.surname;
         const password = formData.password !== "" ? formData.password : props.user.password;
-        const telephone = formData.telephone !== "" ? formData.password : props.user.password;
+        const telephone = formData.telephone !== "" ? formData.telephone : props.user.telephone;
 
         props.onEditUser(username, name, surname, password, telephone);
         navigate("../users");
     }
 
     return (
-        <div className={"row mt-5"}>
-            <div className={"col-md-5"}>
-                <form onSubmit={onFormSubmit}>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"username"}
-                               name={"username"}
-                               disabled={true}
-                               placeholder={props.user.username}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"name"}
-                               name={"name"}
-                               placeholder={props.user.name}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"surname"}
-                               name={"surname"}
-                               placeholder={props.user.surname}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"password"}
-                               name={"password"}
-                               placeholder={props.user.password}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"telephone"}
-                               name={"telephone"}
-                               placeholder={props.user.telephone}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <button type={"submit"} id={"submit"} className={"btn btn-primary"}>
-                        Edit
-                    </button>
-                </form>
+        <div className={"container"}>
+            <div className={"row mt-5"}>
+                <div className={"col-md-5"}>
+                    <form onSubmit={onFormSubmit}>
+                        <div className={"form-group"}>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"username"}
+                                   name={"username"}
+                                   disabled={true}
+                                   placeholder={props.user.username}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className={"form-group"}>
+                            <label>Име</label>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"name"}
+                                   name={"name"}
+                                   placeholder={props.user.name}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className={"form-group"}>
+                            <label>Презиме</label>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"surname"}
+                                   name={"surname"}
+                                   placeholder={props.user.surname}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className={"form-group"}>
+                            <label>Пасворд</label>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"password"}
+                                   name={"password"}
+                                   placeholder={props.user.password}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className={"form-group"}>
+                            <label>Телефон</label>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"telephone"}
+                                   name={"telephone"}
+                                   placeholder={props.user.telephone}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className={"text-center"}>
+                        <button type={"submit"} id={"submit"} className={"btn btn-primary m-3 w-25"}>
+                            Edit
+                        </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ const mainHeader = () => {
             <Link className={"navbar-brand col-sm-3 col-md-2 mr-0"} to={"/users"}>Users</Link>
             <ul className="navbar-nav px-3">
                 <li className="nav-item text-nowrap">
-                    <Link className={"nav-link"} to={"/registerUser"}>Sign in</Link>
+                    <Link className={"nav-link"} to={"/registerUser"}>Register</Link>
                 </li>
             </ul>
         </nav>

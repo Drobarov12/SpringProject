@@ -23,12 +23,21 @@ public class ReservationsRestController {
         return this.reservationsService.listAllReservations();
     }
 
+    @GetMapping ("/serviceTypes")
+    public List<ServiceType> serviceTypeList(){
+        return List.of(ServiceType.CHECK,ServiceType.CAR_PROBLEM,ServiceType.REGULAR_CHECK,ServiceType.OTHER);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Reservations> getReservation(@PathVariable Long id){
+        return this.reservationsService.findById(id)
+                .map(rez -> ResponseEntity.ok().body(rez))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<Reservations> addRezervation(@RequestParam String username, @RequestParam String name,
-                               @RequestParam String surname, @RequestParam String telephone,
-                               @RequestParam String carBrand, @RequestParam String carModel,
-                               @RequestParam ServiceType serviceType, @RequestParam(required = false) String description){
-        return this.reservationsService.create(username,name,surname,telephone,carBrand,carModel,serviceType,description)
+    public ResponseEntity<Reservations> addRezervation(@RequestBody Reservations reservations){
+        return this.reservationsService.create(reservations)
                 .map(rez -> ResponseEntity.ok().body(rez))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
 
@@ -36,11 +45,8 @@ public class ReservationsRestController {
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<Reservations> editRezervation(@PathVariable Long id ,
-                                                        @RequestParam String username, @RequestParam String name,
-                                                        @RequestParam String surname, @RequestParam String telephone,
-                                                        @RequestParam String carBrand, @RequestParam String carModel,
-                                                        @RequestParam ServiceType serviceType, @RequestParam(required = false) String description){
-        return this.reservationsService.update(id,username,name,surname,telephone,carBrand,carModel,serviceType,description)
+                                                        @RequestBody Reservations reservations){
+        return this.reservationsService.update(id,reservations)
                 .map(rez -> ResponseEntity.ok().body(rez))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }

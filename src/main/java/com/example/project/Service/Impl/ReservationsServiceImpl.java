@@ -42,25 +42,25 @@ public class ReservationsServiceImpl implements ReservationsService {
     }
 
     @Override
-    public Optional<Reservations> create(String usename, String name, String surname, String telephone,
-                                         String carBrand, String carModel, ServiceType serviceType, String description) {
-        Reservations temp = new Reservations(usename, name, surname, telephone, carBrand, carModel, serviceType,description);
+    public Optional<Reservations> create(Reservations reservations) {
+        Reservations temp = new Reservations(reservations.getUsername(),reservations.getName(),
+                reservations.getSurname(),reservations.getTelephone(), reservations.getCarBrand(),
+                reservations.getCarModel(),reservations.getServiceType(),reservations.getDescription());
         this.reservationsRepository.save(temp);
         return Optional.of(temp);
     }
 
     @Override
-    public Optional<Reservations> update(Long id, String usename, String name, String surname, String telephone,
-                              String carBrand, String carModel, ServiceType serviceType,String description) {
+    public Optional<Reservations> update(Long id, Reservations reservations) {
         Reservations temp = this.findById(id).orElseThrow(ReservationNotFound::new);
-        temp.setUsername(usename);
-        temp.setName(name);
-        temp.setSurname(surname);
-        temp.setTelephone(telephone);
-        temp.setCarBrand(carBrand);
-        temp.setCarModel(carModel);
-        temp.setServiceType(serviceType);
-        temp.setDescription(description);
+        temp.setUsername(reservations.getUsername());
+        temp.setName(reservations.getName());
+        temp.setSurname(reservations.getSurname());
+        temp.setTelephone(reservations.getTelephone());
+        temp.setCarBrand(reservations.getCarBrand());
+        temp.setCarModel(reservations.getCarModel());
+        temp.setServiceType(reservations.getServiceType());
+        temp.setDescription(reservations.getDescription());
         this.reservationsRepository.save(temp);
         return Optional.of(temp);
     }

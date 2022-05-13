@@ -17,10 +17,8 @@ public interface ReservationsService {
 
     void delete(Long id);
 
-    Optional<Reservations> create(String usename, String name, String surname,
-                                  String telephone, String carBrand, String carModel, ServiceType serviceType, String desctiption);
+    Optional<Reservations> create(Reservations reservations);
 
-    Optional<Reservations> update(Long id, String usename, String name, String surname,
-                        String telephone, String carBrand, String carModel, ServiceType serviceType,String description);
+    Optional<Reservations> update(Long id, Reservations reservations);
 
 }
