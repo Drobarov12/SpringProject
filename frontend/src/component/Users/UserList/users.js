@@ -1,28 +1,35 @@
 import React from "react";
 import UsersTerm from "../UserTerm/userTerm"
-import '../../../Css/usersCss.css'
+import '../usersCss.css'
+import LeftHeader from "../../Headers/LeftHeader/leftHeader";
 
 const users = (props) => {
     return (
-        <main>
-            <div className={"container"}>
-                <h2>Users</h2>
-                <div className={"container"}>
-                    <div className={"row"}>
+        <div className={"container-fluid"}>
+            <div className={"row"}>
+                <LeftHeader/>
 
-                    {props.users.map((user) => {
-                        return (
-                            <UsersTerm term={user}
-                                       onDelete={props.onDelete}
-                                       onEdit={props.onEdit}
-                                       onChangeRole={props.onChangeRole}/>
-                        )
-                    })}
+                <main className={"col-md-9 ml-sm-auto col-lg-10 px-4"}>
+                    <div className={"container"}>
+                        <h2>Корисници</h2>
+                        <div className={"d-flex flex-wrap justify-content-start"}>
 
+
+                            {props.users.map((user) => {
+                                return (
+                                    <UsersTerm term={user}
+                                               onDelete={props.onDelete}
+                                               onEdit={props.onEdit}
+                                               onChangeRole={props.onChangeRole}/>
+                                )
+                            })}
+
+
+                        </div>
                     </div>
-                </div>
+                </main>
             </div>
-        </main>
+        </div>
     );
 }
 

@@ -15,12 +15,12 @@ const reservation = (props) => {
             <td>
                 <a title={"Delete"} className={"btn btn-danger btm-sm"}
                    onClick={() => props.onDeleteRes(props.term.id)}>
-                    Delete
+                    Избриши
                 </a>
                 <Link className={"btn btn-warning"}
                       onClick={() => props.onEditRes(props.term.id)}
                       to={"/reservations/edit"}>
-                    Edit
+                    Промени
                 </Link>
             </td>
         </tr>

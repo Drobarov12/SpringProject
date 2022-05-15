@@ -31,9 +31,9 @@ const editUser = (props) => {
     }
 
     return (
-        <div className={"container"}>
-            <div className={"row mt-5"}>
-                <div className={"col-md-5"}>
+        <div className="login">
+            <div className={"container text-center w-50 "}>
+                <div className={"shadow p-3 mb-5 bg-white rounded"}>
                     <form onSubmit={onFormSubmit}>
                         <div className={"form-group"}>
                             <input type="text"
@@ -45,6 +45,7 @@ const editUser = (props) => {
                                    onChange={handleChange}
                             />
                         </div>
+                        <br/>
                         <div className={"form-group"}>
                             <label>Име</label>
                             <input type="text"
@@ -55,6 +56,7 @@ const editUser = (props) => {
                                    onChange={handleChange}
                             />
                         </div>
+                        <br/>
                         <div className={"form-group"}>
                             <label>Презиме</label>
                             <input type="text"
@@ -65,6 +67,7 @@ const editUser = (props) => {
                                    onChange={handleChange}
                             />
                         </div>
+                        <br/>
                         <div className={"form-group"}>
                             <label>Пасворд</label>
                             <input type="text"
@@ -75,6 +78,7 @@ const editUser = (props) => {
                                    onChange={handleChange}
                             />
                         </div>
+                        <br/>
                         <div className={"form-group"}>
                             <label>Телефон</label>
                             <input type="text"
@@ -85,10 +89,13 @@ const editUser = (props) => {
                                    onChange={handleChange}
                             />
                         </div>
+                        <br/>
+                        <br/>
                         <div className={"text-center"}>
-                        <button type={"submit"} id={"submit"} className={"btn btn-primary m-3 w-25"}>
-                            Edit
-                        </button>
+                            <Link to={"/users"} className={"btn btn-secondary mx-2"}>Назад</Link>
+                            <button type={"submit"} id={"submit"} className={"btn btn-primary m-3 w-25"}>
+                                Промени
+                            </button>
                         </div>
                     </form>
                 </div>

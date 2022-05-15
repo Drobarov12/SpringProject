@@ -1,45 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import logo from "../../../MIHAJLOV auto repair-logo.png"
 
 const leftHeader = ()=>{
     return(
-        <nav className={"col-md-2 d-none d-md-block bg-light sidebar"}>
+        <nav className={"col-md-2 d-none d-md-block bg-secondary sidebar"}>
         <div className="sidebar-sticky">
+            <Link  to={"/"}>
+                <img src={logo} alt={"logo"} className={"logo"}/>
+            </Link>
             <ul className="nav flex-column">
                 <li className="nav-item">
-                    <a className="nav-link" href="#">
-
-                        Dashboard
-                    </a>
+                    <Link className="nav-link text-white" to={"/reservations"}>
+                        Резервации
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">
-                        Orders
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">
-
-                        Products
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">
-
-                        Customers
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">
-
-                        Reports
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">
-
-                        Integrations
-                    </a>
+                    <Link className="nav-link text-white" to={"/users"}>
+                        Корисници
+                    </Link>
                 </li>
             </ul>
 
