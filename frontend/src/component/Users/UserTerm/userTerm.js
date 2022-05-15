@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const userTerm = (props) => {
     return (
-        <div className={"col-4 card my-2 "}>
+        <div className={"col-3 m-3 card shadow p-3  bg-white"}>
             <div className={"card-body"}>
                 <h5 className={"card-header"}>{props.term.username}</h5>
                 <h6>{props.term.name}</h6>
@@ -14,16 +14,17 @@ const userTerm = (props) => {
                     <Link className={"btn btn-warning"}
                           onClick={() => props.onEdit(props.term.username)}
                           to={"/users/edit"}>
-                        Edit
+                        Промени
                     </Link>
-                    <a title={"Delete"} className={"btn btn-danger btn-lg"}
-                       onClick={() => props.onDelete(props.term.username)}>
-                        Delete
-                    </a>
                     <a title={"ChangeRole"} className={"btn btn-info"}
                        onClick={() => props.onChangeRole(props.term.username)}>
-                        ChangeRole
+                        Промени улога
                     </a>
+                    <a title={"Delete"} className={"btn btn-danger btn-lg"}
+                       onClick={() => props.onDelete(props.term.username)}>
+                        Избриши
+                    </a>
+
                 </div>
 
             </div>

@@ -10,6 +10,7 @@ import Register from "../Users/RegisterUser/registerUser"
 import EditUser from "../Users/EditUser/editUser"
 import AddReservation from "../Reservations/AddReservation/addReservation"
 import EditReservation from "../Reservations/EditReservation/editReservation"
+import Login from "../LogIn/login"
 
 class App extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class App extends Component {
                 <MainHeader/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="login" element={<Login/>}/>
                     <Route path="users/edit"
                            element={<EditUser onEditUser={this.editUser} user={this.state.selectedUser}/>}/>
                     <Route path="users" element={<Users users={this.state.users}

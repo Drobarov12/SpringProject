@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const registerUser = (props) => {
     const navigate = useNavigate();
@@ -31,63 +31,71 @@ const registerUser = (props) => {
     }
 
     return (
-        <div className={"row mt-5"}>
-            <div className={"col-md-5"}>
-                <form onSubmit={onFormSubmit}>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"username"}
-                               name={"username"}
-                               required
-                               placeholder={"Username"}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"name"}
-                               name={"name"}
-                               required
-                               placeholder={"Name"}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"surname"}
-                               name={"surname"}
-                               required
-                               placeholder={"Surname"}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="password"
-                               className={"form-control"}
-                               id={"password"}
-                               name={"password"}
-                               required
-                               placeholder={"Password"}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className={"form-group"}>
-                        <input type="text"
-                               className={"form-control"}
-                               id={"telephone"}
-                               name={"telephone"}
-                               required
-                               placeholder={"Telephone"}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <button type={"submit"} id={"submit"} className={"btn btn-primary"}>
-                        Register
-                    </button>
-                </form>
+        <div className="login">
+            <div className={"container text-center w-25 "}>
+                <div className={"shadow p-3 mb-5 bg-white rounded haight"}>
+                    <form onSubmit={onFormSubmit}>
+                        <div className={"form-group"}>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"username"}
+                                   name={"username"}
+                                   required
+                                   placeholder={"Username"}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <br/>
+                        <div className={"form-group"}>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"name"}
+                                   name={"name"}
+                                   required
+                                   placeholder={"Име"}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <br/>
+                        <div className={"form-group"}>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"surname"}
+                                   name={"surname"}
+                                   required
+                                   placeholder={"Презиме"}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <br/>
+                        <div className={"form-group"}>
+                            <input type="password"
+                                   className={"form-control"}
+                                   id={"password"}
+                                   name={"password"}
+                                   required
+                                   placeholder={"Password"}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <br/>
+                        <div className={"form-group"}>
+                            <input type="text"
+                                   className={"form-control"}
+                                   id={"telephone"}
+                                   name={"telephone"}
+                                   required
+                                   placeholder={"Телефон"}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <br/>
+                        <br/>
+                        <button type={"submit"} id={"submit"} className={"btn btn-primary"}>
+                            Регистрирај се
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );
