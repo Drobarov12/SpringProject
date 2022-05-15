@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom';
+import {Link} from "react-router-dom";
 
 const editUser = (props) => {
     const navigate = useNavigate();
@@ -92,7 +93,7 @@ const editUser = (props) => {
                         <br/>
                         <br/>
                         <div className={"text-center"}>
-                            <Link to={"/users"} className={"btn btn-secondary mx-2"}>Назад</Link>
+                            <Link to={"/users"} className={"btn btn-secondary "}>Назад</Link>
                             <button type={"submit"} id={"submit"} className={"btn btn-primary m-3 w-25"}>
                                 Промени
                             </button>

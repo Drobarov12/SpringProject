@@ -112,12 +112,13 @@ const editReservation = (props) => {
                         <br/>
                         <div className={"form-group"}>
 
-                            {props.s.map((term) =>
-                                <label className={"mx-3"}>
-                                    <input type={"radio"} name={"serviceType"} value={term}/> {term}
-                                </label>
+                            <label className={"mx-2"}>Вид на сервис </label>
+                            <select name="serviceType" onChange={handleChange}>
+                                {props.s.map((term) =>
+                                    <option value={term}>{term}</option>
+                                )}
+                            </select>
 
-                            )}
 
 
                         </div>
